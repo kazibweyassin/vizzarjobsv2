@@ -3,6 +3,7 @@ import useFetch from "@/hooks/use-fetch";
 import { useUser } from "@clerk/clerk-react";
 import { BarLoader } from "react-spinners";
 import JobCard from "./job-card";
+import EmptyState from "./empty-state";
 import { useEffect } from "react";
 
 const CreatedJobs = () => {
@@ -26,7 +27,7 @@ const CreatedJobs = () => {
       {loadingCreatedJobs ? (
         <BarLoader className="mt-4" width={"100%"} color="#36d7b7" />
       ) : (
-        <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="wellfound-grid mt-8">
           {createdJobs?.length ? (
             createdJobs.map((job) => {
               return (
@@ -39,7 +40,13 @@ const CreatedJobs = () => {
               );
             })
           ) : (
-            <div>No Jobs Found 😢</div>
+            <div className="col-span-full">
+              <EmptyState 
+                type="my-jobs"
+                title="No jobs posted yet"
+                description="Start posting job opportunities to attract talented candidates."
+              />
+            </div>
           )}
         </div>
       )}

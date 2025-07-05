@@ -2,11 +2,12 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import AppLayout from "./layouts/app-layout";
 import ProtectedRoute from "./components/protected-route";
+import ErrorBoundary from "./components/error-boundary";
 import { ThemeProvider } from "./components/theme-provider";
 
 import LandingPage from "./pages/landing";
 import Onboarding from "./pages/onboarding";
-import PostJob from "./pages/post-job";
+import PostJobNew from "./pages/post-job-new";
 import JobListing from "./pages/jobListing";
 import MyJobs from "./pages/my-jobs";
 import SavedJobs from "./pages/saved-jobs";
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
         path: "/post-job",
         element: (
           <ProtectedRoute>
-            <PostJob />
+            <PostJobNew />
           </ProtectedRoute>
         ),
       },
@@ -76,9 +77,11 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <RouterProvider router={router} />
-    </ThemeProvider>
+    <ErrorBoundary>
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </ErrorBoundary>
   );
 }
 

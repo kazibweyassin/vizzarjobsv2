@@ -1,9 +1,10 @@
 import { useUser } from "@clerk/clerk-react";
 import ApplicationCard from "./application-card";
+import EmptyState from "./empty-state";
+import { LoadingSpinner } from "./loading";
 import { useEffect } from "react";
 import { getApplications } from "@/api/apiApplication";
 import useFetch from "@/hooks/use-fetch";
-import { BarLoader } from "react-spinners";
 
 const CreatedApplications = () => {
   const { user } = useUser();
@@ -22,20 +23,28 @@ const CreatedApplications = () => {
   }, []);
 
   if (loadingApplications) {
-    return <BarLoader className="mb-4" width={"100%"} color="#36d7b7" />;
+    return <LoadingSpinner fullPage={false} text="Loading your applications..." />;
   }
 
   return (
-    <div className="flex flex-col gap-2">
-      {applications?.map((application) => {
-        return (
-          <ApplicationCard
-            key={application.id}
-            application={application}
-            isCandidate={true}
-          />
-        );
-      })}
+    <div className="space-y-4">
+      {applications?.length ? (
+        applications.map((application) => {
+          return (
+            <ApplicationCard
+              key={application.id}
+              application={application}
+              isCandidate={true}
+            />
+          );
+        })
+      ) : (
+        <EmptyState 
+          type="applications"
+          title="No applications yet"
+          description="You haven't applied to any jobs yet. Start exploring opportunities!"
+        />
+      )}
     </div>
   );
 };

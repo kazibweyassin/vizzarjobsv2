@@ -38,35 +38,35 @@ const ApplicationCard = ({ application, isCandidate = false }) => {
   };
 
   return (
-    <Card>
+    <Card className="wellfound-card">
       {loadingHiringStatus && <BarLoader width={"100%"} color="#36d7b7" />}
       <CardHeader>
-        <CardTitle className="flex justify-between font-bold">
+        <CardTitle className="wellfound-heading flex justify-between">
           {isCandidate
             ? `${application?.job?.title} at ${application?.job?.company?.name}`
             : application?.name}
           <Download
             size={18}
-            className="bg-white text-black rounded-full h-8 w-8 p-1.5 cursor-pointer"
+            className="bg-white text-black rounded-full h-8 w-8 p-1.5 cursor-pointer hover:bg-gray-50 transition-colors"
             onClick={handleDownload}
           />
         </CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-4 flex-1">
-        <div className="flex flex-col md:flex-row justify-between">
-          <div className="flex gap-2 items-center">
+        <div className="flex flex-col md:flex-row justify-between gap-4">
+          <div className="flex gap-2 items-center wellfound-text">
             <BriefcaseBusiness size={15} /> {application?.experience} years of
             experience
           </div>
-          <div className="flex gap-2 items-center">
+          <div className="flex gap-2 items-center wellfound-text">
             <School size={15} />
             {application?.education}
           </div>
-          <div className="flex gap-2 items-center">
+          <div className="flex gap-2 items-center wellfound-text">
             <Boxes size={15} /> Skills: {application?.skills}
           </div>
         </div>
-        <hr />
+        <hr className="border-gray-100" />
       </CardContent>
       <CardFooter className="flex justify-between">
         <span>{new Date(application?.created_at).toLocaleString()}</span>

@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
 import { useUser } from "@clerk/clerk-react";
 import { State } from "country-state-city";
-import { BarLoader } from "react-spinners";
 import useFetch from "@/hooks/use-fetch";
+import { BarLoader } from "react-spinners"; 
+
 
 import JobCard from "@/components/job-card";
+import EmptyState from "@/components/empty-state";
+import { LoadingSpinner, LoadingGrid } from "@/components/loading";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -19,19 +21,17 @@ import {
 import { getCompanies } from "@/api/apiCompanies";
 import { getJobs } from "@/api/apiJobs";
 
+import { Search, MapPin, Building2, X, Filter } from "lucide-react";
+
 const JobListing = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [location, setLocation] = useState("");
   const [company_id, setCompany_id] = useState("");
+  const [showFilters, setShowFilters] = useState(false);
 
   const { isLoaded } = useUser();
 
-  const {
-    // loading: loadingCompanies,
-    data: companies,
-    fn: fnCompanies,
-  } = useFetch(getCompanies);
-
+  const { data: companies, fn: fnCompanies } = useFetch(getCompanies);
   const {
     loading: loadingJobs,
     data: jobs,
@@ -46,20 +46,17 @@ const JobListing = () => {
     if (isLoaded) {
       fnCompanies();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoaded]);
 
   useEffect(() => {
     if (isLoaded) fnJobs();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoaded, location, company_id, searchQuery]);
+  }, [isLoaded, location, company_id, fnJobs, searchQuery]);
 
   const handleSearch = (e) => {
     e.preventDefault();
-    let formData = new FormData(e.target);
-
+    const formData = new FormData(e.target);
     const query = formData.get("search-query");
-    if (query) setSearchQuery(query);
+    setSearchQuery(query || "");
   };
 
   const clearFilters = () => {
@@ -68,97 +65,166 @@ const JobListing = () => {
     setLocation("");
   };
 
+  const hasActiveFilters = searchQuery || location || company_id;
+
   if (!isLoaded) {
-    return <BarLoader className="mb-4" width={"100%"} color="#36d7b7" />;
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+        <BarLoader width={100} color="#2563eb" />
+      </div>
+    );
   }
 
   return (
-    <div className="">
-      <h1 className="gradient-title font-extrabold text-6xl sm:text-7xl text-center pb-8">
-        Latest Jobs
-      </h1>
-      <form
-        onSubmit={handleSearch}
-        className="h-14 flex flex-row w-full gap-2 items-center mb-3"
-      >
-        <Input
-          type="text"
-          placeholder="Search Jobs by Title.."
-          name="search-query"
-          className="h-full flex-1  px-4 text-md"
-        />
-        <Button type="submit" className="h-full sm:w-28" variant="blue">
-          Search
-        </Button>
-      </form>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+      {/* Header */}
+      <div className="bg-white/80 border-b shadow-sm sticky top-0 z-10 backdrop-blur">
+        <div className="max-w-7xl mx-auto px-4 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div>
+            <h1 className="text-4xl font-extrabold text-gray-900 mb-1 tracking-tight">
+              Find Your Next Job
+            </h1>
+            <p className="text-gray-600 text-lg">
+              {loadingJobs
+                ? "Loading jobs..."
+                : `Discover ${jobs?.length || 0} opportunities`}
+            </p>
+          </div>
+          <Button
+            variant="outline"
+            className="flex items-center gap-2 md:hidden"
+            onClick={() => setShowFilters((v) => !v)}
+          >
+            <Filter size={18} />
+            {showFilters ? "Hide Filters" : "Show Filters"}
+          </Button>
+        </div>
+      </div>
 
-      <div className="flex flex-col sm:flex-row gap-2">
-        <Select value={location} onValueChange={(value) => setLocation(value)}>
-          <SelectTrigger>
-            <SelectValue placeholder="Filter by Location" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              {State.getStatesOfCountry("IN").map(({ name }) => {
-                return (
+      {/* Search & Filters */}
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        <form
+          onSubmit={handleSearch}
+          className="flex flex-col md:flex-row gap-4 items-stretch mb-6"
+        >
+          <div className="relative flex-1">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+            <Input
+              type="text"
+              placeholder="Search jobs, titles, or keywords..."
+              name="search-query"
+              defaultValue={searchQuery}
+              className="pl-10 h-12 rounded-xl border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-200"
+              autoComplete="off"
+            />
+          </div>
+          <Button
+            type="submit"
+            className="h-12 px-6 rounded-xl font-semibold bg-blue-600 hover:bg-blue-700 text-white shadow"
+          >
+            Search
+          </Button>
+          {hasActiveFilters && (
+            <Button
+              type="button"
+              variant="ghost"
+              onClick={clearFilters}
+              className="h-12 px-4 rounded-xl text-blue-600 flex items-center gap-2"
+            >
+              <X className="h-5 w-5" />
+              Clear
+            </Button>
+          )}
+        </form>
+
+        {/* Filters */}
+        <div
+          className={`transition-all duration-300 ${
+            showFilters ? "block" : "hidden md:grid"
+          } grid-cols-1 md:grid-cols-3 gap-4 mb-8`}
+        >
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              <MapPin className="inline mr-1 text-blue-500" size={16} />
+              Location
+            </label>
+            <Select value={location} onValueChange={setLocation}>
+              <SelectTrigger>
+                <SelectValue placeholder="Any location" />
+              </SelectTrigger>
+              <SelectContent>
+                {State.getStatesOfCountry("IN").map(({ name }) => (
                   <SelectItem key={name} value={name}>
                     {name}
                   </SelectItem>
-                );
-              })}
-            </SelectGroup>
-          </SelectContent>
-        </Select>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
 
-        <Select
-          value={company_id}
-          onValueChange={(value) => setCompany_id(value)}
-        >
-          <SelectTrigger>
-            <SelectValue placeholder="Filter by Company" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              {companies?.map(({ name, id }) => {
-                return (
-                  <SelectItem key={name} value={id}>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              <Building2 className="inline mr-1 text-blue-500" size={16} />
+              Company
+            </label>
+            <Select value={company_id} onValueChange={setCompany_id}>
+              <SelectTrigger>
+                <SelectValue placeholder="Any company" />
+              </SelectTrigger>
+              <SelectContent>
+                {companies?.map(({ name, id }) => (
+                  <SelectItem key={id} value={id}>
                     {name}
                   </SelectItem>
-                );
-              })}
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-        <Button
-          className="sm:w-1/2"
-          variant="destructive"
-          onClick={clearFilters}
-        >
-          Clear Filters
-        </Button>
-      </div>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
 
-      {loadingJobs && (
-        <BarLoader className="mt-4" width={"100%"} color="#36d7b7" />
-      )}
+        {/* Results */}
+        <div className="mb-6 flex items-center justify-between">
+          <h2 className="text-2xl font-bold text-gray-900">
+            {loadingJobs ? "Loading..." : `${jobs?.length || 0} Jobs Found`}
+          </h2>
+          <span className="text-gray-500 text-sm hidden md:inline">
+            {hasActiveFilters
+              ? "Filters applied"
+              : "Showing all jobs"}
+          </span>
+        </div>
 
-      {loadingJobs === false && (
-        <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {jobs?.length ? (
-            jobs.map((job) => {
-              return (
+        {/* Loading */}
+        {loadingJobs && (
+          <div className="flex justify-center py-16">
+            <BarLoader width={120} color="#2563eb" />
+          </div>
+        )}
+
+        {/* Jobs Grid */}
+        {!loadingJobs && (
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {jobs?.length ? (
+              jobs.map((job) => (
                 <JobCard
                   key={job.id}
                   job={job}
                   savedInit={job?.saved?.length > 0}
                 />
-              );
-            })
-          ) : (
-            <div>No Jobs Found 😢</div>
-          )}
-        </div>
-      )}
+              ))
+            ) : (
+              <div className="col-span-full text-center py-16">
+                <p className="text-gray-500 text-lg mb-4">No jobs found</p>
+                {hasActiveFilters && (
+                  <Button onClick={clearFilters} variant="outline">
+                    Clear filters to see all jobs
+                  </Button>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
