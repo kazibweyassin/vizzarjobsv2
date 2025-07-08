@@ -1879,7 +1879,10 @@ const LandingPage = () => {
           </div>
           
           <div className="border-t border-[#e7e4e7] mt-10 pt-8 text-center text-sm text-[#737373]">
-            <p>&copy; 2025 VizzarJobs. All rights reserved.</p>
+            <p>&copy; 2025 VizzarJobs. All rights reserved.</p> 
+              <p>&copy; Contact Us  @support@vizzarjobs.com</p> 
+
+            
           </div>
         </div>
       </footer>
