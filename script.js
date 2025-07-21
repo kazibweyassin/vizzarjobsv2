@@ -15,15 +15,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Backend Integration
 function initBackendIntegration() {
-    // Test backend connection
-    testBackendConnection();
-    
-    // Load subscription tiers from backend
-    loadSubscriptionTiers();
-    
-    // Setup form handlers
-    setupContactForm();
-    setupNewsletterForm();
+    // Add a delay to ensure API is loaded
+    setTimeout(() => {
+        if (window.vizzarAPI) {
+            // Test backend connection
+            testBackendConnection();
+            
+            // Load subscription tiers from backend
+            loadSubscriptionTiers();
+            
+            // Setup form handlers
+            setupContactForm();
+            setupNewsletterForm();
+        } else {
+            console.log('ℹ️ API not available, running in offline mode');
+        }
+    }, 2000);
 }
 
 async function testBackendConnection() {
@@ -59,12 +66,18 @@ function showConnectionStatus(isConnected) {
 
 async function loadSubscriptionTiers() {
     try {
+        if (!window.vizzarAPI) {
+            console.log('ℹ️ API not available, using default pricing');
+            return;
+        }
+        
         const response = await window.vizzarAPI.getSubscriptionTiers();
         if (response.status === 'success') {
             updatePricingDisplay(response.data);
         }
     } catch (error) {
         console.error('Failed to load subscription tiers:', error);
+        console.log('ℹ️ Using default pricing display');
     }
 }
 

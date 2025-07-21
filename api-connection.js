@@ -202,6 +202,9 @@ window.vizzarAPI = new VizzarAPI();
 // Test connection on page load
 document.addEventListener('DOMContentLoaded', async () => {
     try {
+        // Add a small delay to ensure the API class is fully initialized
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
         const health = await window.vizzarAPI.healthCheck();
         console.log('✅ Backend connection successful:', health);
         
@@ -210,6 +213,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (error) {
         console.error('❌ Backend connection failed:', error);
         updateConnectionStatus(false);
+        
+        // Show user-friendly message but don't break the site
+        console.log('ℹ️ Frontend will work in offline mode. Some features may be limited.');
     }
 });
 

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VizzarJobs - API Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #0A0A0A;
+            color: white;
+        }
+        .status {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .success { background-color: #4CAF50; }
+        .error { background-color: #f44336; }
+        .info { background-color: #2196F3; }
+        button {
+            background: #D4AF37;
+            color: #0A0A0A;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 5px;
+            font-weight: bold;
+        }
+        button:hover {
+            background: #FFD700;
+        }
+        pre {
+            background: #1A1A1A;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>🚀 VizzarJobs API Connection Test</h1>
+    
+    <div id="status-display"></div>
+    
+    <h2>Test API Endpoints</h2>
+    <button onclick="testHealth()">Test Health</button>
+    <button onclick="testSubscriptionTiers()">Test Subscription Tiers</button>
+    <button onclick="testAPIConnection()">Test Full Connection</button>
+    
+    <h2>API Response</h2>
+    <pre id="response-display">Click a test button to see results...</pre>
+    
+    <!-- API Connection -->
+    <script src="api-connection.js"></script>
+    
+    <script>
+        function updateStatus(message, type = 'info') {
+            const statusDiv = document.getElementById('status-display');
+            statusDiv.innerHTML = `<div class="status ${type}">${message}</div>`;
+        }
+        
+        function updateResponse(data) {
+            const responseDiv = document.getElementById('response-display');
+            responseDiv.textContent = JSON.stringify(data, null, 2);
+        }
+        
+        async function testHealth() {
+            updateStatus('Testing health endpoint...', 'info');
+            try {
+                const response = await window.vizzarAPI.healthCheck();
+                updateStatus('✅ Health check successful!', 'success');
+                updateResponse(response);
+            } catch (error) {
+                updateStatus(`❌ Health check failed: ${error.message}`, 'error');
+                updateResponse({ error: error.message });
+            }
+        }
+        
+        async function testSubscriptionTiers() {
+            updateStatus('Testing subscription tiers endpoint...', 'info');
+            try {
+                const response = await window.vizzarAPI.getSubscriptionTiers();
+                updateStatus('✅ Subscription tiers loaded successfully!', 'success');
+                updateResponse(response);
+            } catch (error) {
+                updateStatus(`❌ Subscription tiers failed: ${error.message}`, 'error');
+                updateResponse({ error: error.message });
+            }
+        }
+        
+        async function testAPIConnection() {
+            updateStatus('Testing full API connection...', 'info');
+            
+            // Test if API exists
+            if (!window.vizzarAPI) {
+                updateStatus('❌ API not available', 'error');
+                updateResponse({ error: 'window.vizzarAPI not found' });
+                return;
+            }
+            
+            updateStatus('✅ API object found', 'success');
+            
+            // Show API configuration
+            const config = {
+                baseURL: window.vizzarAPI.baseURL,
+                hostname: window.location.hostname,
+                hasToken: !!window.vizzarAPI.token
+            };
+            
+            updateResponse(config);
+        }
+        
+        // Auto-test on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                updateStatus('Page loaded. API available: ' + (window.vizzarAPI ? 'YES' : 'NO'), 
+                           window.vizzarAPI ? 'success' : 'error');
+                if (window.vizzarAPI) {
+                    testAPIConnection();
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
