@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VizzarJobs - Leading Global Visa Sponsorship Platform | Land Your Dream Job Abroad</title>
+    <meta name="description" content="Join 500,000+ professionals who found their dream jobs abroad. Industry-leading visa sponsorship platform with guaranteed results and expert guidance.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌟</text></svg>">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe', 
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e'
+                        },
+                        accent: {
+                            50: '#fdf4ff',
+                            100: '#fae8ff',
+                            200: '#f5d0fe',
+                            300: '#f0abfc',
+                            400: '#e879f9',
+                            500: '#d946ef',
+                            600: '#c026d3',
+                            700: '#a21caf',
+                            800: '#86198f',
+                            900: '#701a75'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        display: ['Space Grotesk', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles-modern.css">
+</head>
+<body class="font-sans antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-lg border-b border-gray-200/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-gradient-to-br from-primary-600 to-accent-600 rounded-xl flex items-center justify-center">
+                        <i class="fas fa-globe text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-display font-bold text-gray-900">VizzarJobs</h1>
+                        <p class="text-xs text-gray-500">Global Opportunities</p>
+                    </div>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-primary-600 font-medium">Home</a>
+                    <a href="#how-it-works" class="text-gray-700 hover:text-primary-600 font-medium">How It Works</a>
+                    <a href="#companies" class="text-gray-700 hover:text-primary-600 font-medium">Top Companies</a>
+                    <a href="#success-stories" class="text-gray-700 hover:text-primary-600 font-medium">Success Stories</a>
+                    <a href="#pricing" class="text-gray-700 hover:text-primary-600 font-medium">Pricing</a>
+                    <button onclick="scrollToForm()" class="bg-gradient-to-r from-primary-600 to-accent-600 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all">
+                        Get Started Free
+                    </button>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-20 pb-16 overflow-hidden">
+        <!-- Background -->
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&auto=format&fit=crop&w=2048&q=80" 
+                 alt="Professional global business" 
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-purple-900/80 to-blue-900/90"></div>
+        </div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center min-h-screen">
+                <!-- Left Content -->
+                <div class="text-white">
+                    <!-- Trust Badge -->
+                    <div class="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-8">
+                        <div class="flex -space-x-2 mr-3">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b47c?ixlib=rb-4.0.3&auto=format&fit=crop&w=64&q=80" class="w-6 h-6 rounded-full border-2 border-white">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=64&q=80" class="w-6 h-6 rounded-full border-2 border-white">
+                            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&auto=format&fit=crop&w=64&q=80" class="w-6 h-6 rounded-full border-2 border-white">
+                        </div>
+                        <span class="text-sm font-medium">500,000+ success stories</span>
+                    </div>
+                    
+                    <h1 class="text-5xl lg:text-7xl font-display font-bold leading-tight mb-6">
+                        Land Your 
+                        <span class="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
+                            Dream Job
+                        </span> 
+                        Abroad
+                    </h1>
+                    
+                    <p class="text-xl text-blue-100 mb-8 leading-relaxed">
+                        Join the world's largest visa sponsorship platform. Connect with 50,000+ employers, 
+                        get expert guidance, and secure your future with guaranteed job placement.
+                    </p>
+                    
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-6 mb-10">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-yellow-400">98%</div>
+                            <div class="text-sm text-blue-200">Success Rate</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-yellow-400">50k+</div>
+                            <div class="text-sm text-blue-200">Employers</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-yellow-400">180+</div>
+                            <div class="text-sm text-blue-200">Countries</div>
+                        </div>
+                    </div>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="scrollToForm()" class="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-8 py-4 rounded-lg font-bold text-lg hover:shadow-2xl transition-all transform hover:scale-105">
+                            Start Free Assessment
+                        </button>
+                        <button class="bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-lg font-semibold border border-white/20 hover:bg-white/20 transition-all">
+                            <i class="fas fa-play mr-2"></i>
+                            Watch Success Stories
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Right Content - Success Metrics -->
+                <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+                    <h3 class="text-2xl font-bold text-white mb-6">Real-Time Success Metrics</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-between">
+                            <span class="text-blue-100">Jobs Secured Today</span>
+                            <span class="text-2xl font-bold text-yellow-400">247</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-blue-100">Active Job Openings</span>
+                            <span class="text-2xl font-bold text-green-400">12,847</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-blue-100">Average Salary Increase</span>
+                            <span class="text-2xl font-bold text-orange-400">+240%</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Success -->
+                    <div class="mt-8 p-4 bg-white/10 rounded-lg">
+                        <p class="text-sm text-blue-200 mb-2">Latest Success</p>
+                        <div class="flex items-center space-x-3">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=64&q=80" class="w-10 h-10 rounded-full">
+                            <div>
+                                <p class="text-white font-medium">Sarah Chen</p>
+                                <p class="text-sm text-blue-200">Software Engineer → Canada</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Indicators -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-gray-600 mb-8">Trusted by professionals from</p>
+            <div class="grid grid-cols-6 gap-8 items-center opacity-60">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/272px-Google_2015_logo.svg.png" alt="Google" class="h-8 mx-auto grayscale hover:grayscale-0 transition-all">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/256px-Amazon_logo.svg.png" alt="Amazon" class="h-8 mx-auto grayscale hover:grayscale-0 transition-all">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/LinkedIn_Logo.svg/256px-LinkedIn_Logo.svg.png" alt="LinkedIn" class="h-8 mx-auto grayscale hover:grayscale-0 transition-all">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/256px-IBM_logo.svg.png" alt="IBM" class="h-8 mx-auto grayscale hover:grayscale-0 transition-all">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/256px-Microsoft_logo.svg.png" alt="Microsoft" class="h-8 mx-auto grayscale hover:grayscale-0 transition-all">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/256px-Apple_logo_black.svg.png" alt="Apple" class="h-8 mx-auto grayscale hover:grayscale-0 transition-all">
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-display font-bold text-gray-900 mb-4">
+                    Your Journey to Global Success
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Our proven 4-step process has helped over 500,000 professionals secure visa sponsorship jobs worldwide
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Step 1 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all group">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-user-check text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Free Assessment</h3>
+                    <p class="text-gray-600">Complete our AI-powered skills assessment to identify your best visa sponsorship opportunities</p>
+                    <div class="mt-6 p-4 bg-blue-50 rounded-lg">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Skills assessment" class="w-full h-32 object-cover rounded-lg">
+                    </div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all group">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-search text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Smart Matching</h3>
+                    <p class="text-gray-600">Our algorithm matches you with 50,000+ verified employers actively seeking international talent</p>
+                    <div class="mt-6 p-4 bg-green-50 rounded-lg">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Job matching" class="w-full h-32 object-cover rounded-lg">
+                    </div>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all group">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-rocket text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Expert Guidance</h3>
+                    <p class="text-gray-600">Get personalized coaching from visa experts and industry professionals</p>
+                    <div class="mt-6 p-4 bg-purple-50 rounded-lg">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Expert coaching" class="w-full h-32 object-cover rounded-lg">
+                    </div>
+                </div>
+                
+                <!-- Step 4 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all group">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-trophy text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Land Your Job</h3>
+                    <p class="text-gray-600">Secure your dream job with visa sponsorship and start your new life abroad</p>
+                    <div class="mt-6 p-4 bg-orange-50 rounded-lg">
+                        <img src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Success celebration" class="w-full h-32 object-cover rounded-lg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Companies -->
+    <section id="companies" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-display font-bold text-gray-900 mb-4">
+                    Top Visa Sponsoring Companies
+                </h2>
+                <p class="text-xl text-gray-600">
+                    Connect directly with industry leaders actively hiring international talent
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Company 1 -->
+                <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8 hover:shadow-xl transition-all">
+                    <div class="flex items-center justify-between mb-6">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/272px-Google_2015_logo.svg.png" alt="Google" class="h-12">
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-blue-600">2,847</div>
+                            <div class="text-sm text-gray-600">Open Roles</div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Google</h3>
+                    <p class="text-gray-600 mb-4">Mountain View, CA</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-green-600 font-semibold">$120k - $280k</span>
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                            View Jobs
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Company 2 -->
+                <div class="bg-gradient-to-br from-orange-50 to-red-50 rounded-2xl p-8 hover:shadow-xl transition-all">
+                    <div class="flex items-center justify-between mb-6">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/256px-Amazon_logo.svg.png" alt="Amazon" class="h-12">
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-orange-600">1,923</div>
+                            <div class="text-sm text-gray-600">Open Roles</div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Amazon</h3>
+                    <p class="text-gray-600 mb-4">Seattle, WA</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-green-600 font-semibold">$95k - $240k</span>
+                        <button class="bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition-colors">
+                            View Jobs
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Company 3 -->
+                <div class="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-8 hover:shadow-xl transition-all">
+                    <div class="flex items-center justify-between mb-6">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/256px-Microsoft_logo.svg.png" alt="Microsoft" class="h-12">
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-green-600">1,654</div>
+                            <div class="text-sm text-gray-600">Open Roles</div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Microsoft</h3>
+                    <p class="text-gray-600 mb-4">Redmond, WA</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-green-600 font-semibold">$110k - $260k</span>
+                        <button class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
+                            View Jobs
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Company 4 -->
+                <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 hover:shadow-xl transition-all">
+                    <div class="flex items-center justify-between mb-6">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/256px-Apple_logo_black.svg.png" alt="Apple" class="h-12">
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-purple-600">1,387</div>
+                            <div class="text-sm text-gray-600">Open Roles</div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Apple</h3>
+                    <p class="text-gray-600 mb-4">Cupertino, CA</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-green-600 font-semibold">$125k - $300k</span>
+                        <button class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors">
+                            View Jobs
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Company 5 -->
+                <div class="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-2xl p-8 hover:shadow-xl transition-all">
+                    <div class="flex items-center justify-between mb-6">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/256px-IBM_logo.svg.png" alt="IBM" class="h-12">
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-yellow-600">1,156</div>
+                            <div class="text-sm text-gray-600">Open Roles</div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">IBM</h3>
+                    <p class="text-gray-600 mb-4">Armonk, NY</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-green-600 font-semibold">$85k - $220k</span>
+                        <button class="bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition-colors">
+                            View Jobs
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Company 6 -->
+                <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-8 hover:shadow-xl transition-all">
+                    <div class="flex items-center justify-between mb-6">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/LinkedIn_Logo.svg/256px-LinkedIn_Logo.svg.png" alt="LinkedIn" class="h-12">
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-indigo-600">892</div>
+                            <div class="text-sm text-gray-600">Open Roles</div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">LinkedIn</h3>
+                    <p class="text-gray-600 mb-4">Sunnyvale, CA</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-green-600 font-semibold">$115k - $275k</span>
+                        <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors">
+                            View Jobs
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="bg-gradient-to-r from-primary-600 to-accent-600 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition-all">
+                    Browse All 50,000+ Companies
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section id="success-stories" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-display font-bold text-gray-900 mb-4">
+                    Real Success Stories
+                </h2>
+                <p class="text-xl text-gray-600">
+                    Join hundreds of thousands who transformed their careers with VizzarJobs
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Success Story 1 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b47c?ixlib=rb-4.0.3&auto=format&fit=crop&w=128&q=80" alt="Sarah Chen" class="w-16 h-16 rounded-full mr-4">
+                        <div>
+                            <h3 class="font-bold text-gray-900">Sarah Chen</h3>
+                            <p class="text-gray-600">Software Engineer</p>
+                            <p class="text-sm text-blue-600">India → Canada</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-6">
+                        "VizzarJobs helped me land my dream job at Google Toronto with a 300% salary increase. The expert guidance was invaluable."
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <div class="text-green-600 font-bold">$45k → $135k</div>
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Success Story 2 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=128&q=80" alt="Marcus Johnson" class="w-16 h-16 rounded-full mr-4">
+                        <div>
+                            <h3 class="font-bold text-gray-900">Marcus Johnson</h3>
+                            <p class="text-gray-600">Data Scientist</p>
+                            <p class="text-sm text-blue-600">Nigeria → USA</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-6">
+                        "The platform connected me with Microsoft within 2 weeks. The visa process was smooth and I'm now living my American dream."
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <div class="text-green-600 font-bold">$28k → $142k</div>
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Success Story 3 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&auto=format&fit=crop&w=128&q=80" alt="Emma Rodriguez" class="w-16 h-16 rounded-full mr-4">
+                        <div>
+                            <h3 class="font-bold text-gray-900">Emma Rodriguez</h3>
+                            <p class="text-gray-600">Product Manager</p>
+                            <p class="text-sm text-blue-600">Spain → Australia</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-6">
+                        "Amazing service! Found my role at Atlassian in just 3 weeks. The coaching sessions prepared me perfectly for interviews."
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <div class="text-green-600 font-bold">€35k → $118k</div>
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="bg-gradient-to-r from-primary-600 to-accent-600 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition-all">
+                    Read More Success Stories
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-display font-bold text-gray-900 mb-4">
+                    Choose Your Success Plan
+                </h2>
+                <p class="text-xl text-gray-600">
+                    Industry-leading platform with proven results and money-back guarantee
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Starter Plan -->
+                <div class="bg-white rounded-2xl p-8 border border-gray-200 hover:shadow-xl transition-all">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Starter</h3>
+                        <div class="text-4xl font-bold text-primary-600 mb-2">$97</div>
+                        <p class="text-gray-600">Perfect for getting started</p>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>AI Skills Assessment</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Access to 10,000+ Jobs</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Basic Matching Algorithm</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Email Support</span>
+                        </li>
+                    </ul>
+                    
+                    <button class="w-full bg-primary-600 text-white py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors">
+                        Get Started
+                    </button>
+                </div>
+                
+                <!-- Professional Plan -->
+                <div class="bg-gradient-to-br from-primary-50 to-accent-50 rounded-2xl p-8 border-2 border-primary-200 hover:shadow-xl transition-all relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-primary-600 to-accent-600 text-white px-6 py-2 rounded-full text-sm font-semibold">
+                        Most Popular
+                    </div>
+                    
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Professional</h3>
+                        <div class="text-4xl font-bold text-primary-600 mb-2">$297</div>
+                        <p class="text-gray-600">For serious job seekers</p>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Everything in Starter</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Access to All 50,000+ Jobs</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Priority Matching</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Expert Career Coaching</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Resume Optimization</span>
+                        </li>
+                    </ul>
+                    
+                    <button class="w-full bg-gradient-to-r from-primary-600 to-accent-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all">
+                        Get Started
+                    </button>
+                </div>
+                
+                <!-- Premium Plan -->
+                <div class="bg-white rounded-2xl p-8 border border-gray-200 hover:shadow-xl transition-all">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Premium</h3>
+                        <div class="text-4xl font-bold text-primary-600 mb-2">$597</div>
+                        <p class="text-gray-600">Guaranteed success</p>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Everything in Professional</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Dedicated Success Manager</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Direct Employer Introductions</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Interview Preparation</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>100% Money-Back Guarantee</span>
+                        </li>
+                    </ul>
+                    
+                    <button class="w-full bg-gray-900 text-white py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact" class="py-20 bg-gradient-to-br from-primary-900 via-accent-900 to-primary-900">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center text-white mb-12">
+                <h2 class="text-4xl font-display font-bold mb-4">
+                    Start Your Global Career Journey Today
+                </h2>
+                <p class="text-xl text-blue-100">
+                    Join 500,000+ professionals who found their dream jobs abroad
+                </p>
+            </div>
+            
+            <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+                <form id="contactForm" class="grid md:grid-cols-2 gap-6">
+                    <div class="form-group">
+                        <label for="firstName" class="block text-white font-medium mb-2">First Name</label>
+                        <input type="text" id="firstName" name="firstName" required 
+                               class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 backdrop-blur-sm">
+                        <div id="firstName-error" class="text-red-300 text-sm mt-1 hidden"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lastName" class="block text-white font-medium mb-2">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" required 
+                               class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 backdrop-blur-sm">
+                        <div id="lastName-error" class="text-red-300 text-sm mt-1 hidden"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="block text-white font-medium mb-2">Email Address</label>
+                        <input type="email" id="email" name="email" required 
+                               class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 backdrop-blur-sm">
+                        <div id="email-error" class="text-red-300 text-sm mt-1 hidden"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone" class="block text-white font-medium mb-2">Phone Number (Optional)</label>
+                        <input type="tel" id="phone" name="phone" 
+                               class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 backdrop-blur-sm">
+                        <div id="phone-error" class="text-red-300 text-sm mt-1 hidden"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="targetCountry" class="block text-white font-medium mb-2">Target Country</label>
+                        <select id="targetCountry" name="targetCountry" required 
+                                class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 backdrop-blur-sm">
+                            <option value="">Select Country</option>
+                            <option value="USA">United States</option>
+                            <option value="Canada">Canada</option>
+                            <option value="Australia">Australia</option>
+                            <option value="UK">United Kingdom</option>
+                            <option value="Germany">Germany</option>
+                            <option value="Netherlands">Netherlands</option>
+                            <option value="Singapore">Singapore</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <div id="targetCountry-error" class="text-red-300 text-sm mt-1 hidden"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="profession" class="block text-white font-medium mb-2">Current Profession</label>
+                        <input type="text" id="profession" name="profession" required 
+                               placeholder="e.g. Software Engineer, Marketing Manager"
+                               class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 backdrop-blur-sm">
+                        <div id="profession-error" class="text-red-300 text-sm mt-1 hidden"></div>
+                    </div>
+                    
+                    <div class="md:col-span-2">
+                        <button type="submit" 
+                                class="w-full bg-gradient-to-r from-yellow-400 to-orange-500 text-black py-4 rounded-lg font-bold text-lg hover:shadow-2xl transition-all transform hover:scale-105">
+                            <i class="fas fa-rocket mr-2"></i>
+                            Start Free Assessment Now
+                        </button>
+                    </div>
+                </form>
+                
+                <div id="thank-you-message" class="hidden text-center text-white py-8">
+                    <div class="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-check text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Assessment Started!</h3>
+                    <p class="text-blue-100 mb-6">
+                        Thank you! Our AI is analyzing your profile and matching you with the best opportunities. 
+                        You'll receive your personalized report within 24 hours.
+                    </p>
+                    <div class="bg-white/10 rounded-lg p-4">
+                        <p class="text-sm text-yellow-300">
+                            <i class="fas fa-gift mr-2"></i>
+                            Free bonus: You'll also receive our "Ultimate Visa Sponsorship Guide" (worth $97)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-br from-primary-600 to-accent-600 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-globe text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-display font-bold">VizzarJobs</h3>
+                    </div>
+                    <p class="text-gray-400 mb-6">
+                        The world's leading visa sponsorship platform, helping professionals find their dream jobs abroad since 2019.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">How It Works</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Success Stories</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Browse Jobs</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Pricing</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Resources -->
+                <div>
+                    <h4 class="font-bold mb-6">Resources</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Visa Guide</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Country Requirements</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Interview Tips</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Resume Builder</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div>
+                    <h4 class="font-bold mb-6">Contact</h4>
+                    <div class="space-y-3 text-gray-400">
+                        <p class="flex items-center">
+                            <i class="fas fa-envelope mr-3"></i>
+                            support@vizzarjobs.com
+                        </p>
+                        <p class="flex items-center">
+                            <i class="fas fa-phone mr-3"></i>
+                            +1 (555) 123-4567
+                        </p>
+                        <p class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-3"></i>
+                            San Francisco, CA
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 mt-12">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">
+                        © 2025 VizzarJobs. All rights reserved.
+                    </p>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
+                        <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="payment-integration.js"></script>
+    <script src="email-marketing.js"></script>
+    <script src="analytics-tracking.js"></script>
+</body>
+</html>

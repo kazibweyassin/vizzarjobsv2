@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VizzarJobs - Backend Connection Test</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .test-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .status {
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        
+        .success {
+            background: rgba(76, 175, 80, 0.2);
+            border: 1px solid #4CAF50;
+            color: #4CAF50;
+        }
+        
+        .error {
+            background: rgba(244, 67, 54, 0.2);
+            border: 1px solid #f44336;
+            color: #f44336;
+        }
+        
+        .loading {
+            background: rgba(255, 193, 7, 0.2);
+            border: 1px solid #FFC107;
+            color: #FFC107;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+            color: black;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin: 5px;
+        }
+        
+        button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        }
+        
+        .json-output {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 VizzarJobs Backend Connection Test</h1>
+        
+        <div class="test-section">
+            <h2>Backend Status</h2>
+            <div id="connection-status" class="status loading">Testing connection...</div>
+            <button onclick="testConnection()">Test Connection</button>
+        </div>
+        
+        <div class="test-section">
+            <h2>API Endpoints Test</h2>
+            
+            <h3>Health Check</h3>
+            <button onclick="testHealth()">Test Health Endpoint</button>
+            <div id="health-result" class="json-output"></div>
+            
+            <h3>Subscription Tiers</h3>
+            <button onclick="testTiers()">Test Subscription Tiers</button>
+            <div id="tiers-result" class="json-output"></div>
+            
+            <h3>General Test</h3>
+            <button onclick="testGeneral()">Test General Endpoint</button>
+            <div id="general-result" class="json-output"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>Frontend Integration</h2>
+            <button onclick="testFrontendIntegration()">Test All Integrations</button>
+            <div id="integration-result" class="json-output"></div>
+        </div>
+    </div>
+
+    <script src="api-connection.js"></script>
+    <script>
+        // Test functions
+        async function testConnection() {
+            const statusDiv = document.getElementById('connection-status');
+            statusDiv.className = 'status loading';
+            statusDiv.textContent = 'Testing connection...';
+            
+            try {
+                const response = await fetch('http://localhost:3001/api/health');
+                if (response.ok) {
+                    statusDiv.className = 'status success';
+                    statusDiv.textContent = '✅ Backend is connected and running!';
+                } else {
+                    throw new Error('Backend responded with error');
+                }
+            } catch (error) {
+                statusDiv.className = 'status error';
+                statusDiv.textContent = '❌ Backend connection failed. Make sure the server is running on port 3001.';
+            }
+        }
+        
+        async function testHealth() {
+            const resultDiv = document.getElementById('health-result');
+            resultDiv.textContent = 'Loading...';
+            
+            try {
+                const result = await window.vizzarAPI.healthCheck();
+                resultDiv.textContent = JSON.stringify(result, null, 2);
+            } catch (error) {
+                resultDiv.textContent = `Error: ${error.message}`;
+            }
+        }
+        
+        async function testTiers() {
+            const resultDiv = document.getElementById('tiers-result');
+            resultDiv.textContent = 'Loading...';
+            
+            try {
+                const result = await window.vizzarAPI.getSubscriptionTiers();
+                resultDiv.textContent = JSON.stringify(result, null, 2);
+            } catch (error) {
+                resultDiv.textContent = `Error: ${error.message}`;
+            }
+        }
+        
+        async function testGeneral() {
+            const resultDiv = document.getElementById('general-result');
+            resultDiv.textContent = 'Loading...';
+            
+            try {
+                const response = await fetch('http://localhost:3001/api/test');
+                const result = await response.json();
+                resultDiv.textContent = JSON.stringify(result, null, 2);
+            } catch (error) {
+                resultDiv.textContent = `Error: ${error.message}`;
+            }
+        }
+        
+        async function testFrontendIntegration() {
+            const resultDiv = document.getElementById('integration-result');
+            resultDiv.textContent = 'Testing all integrations...\n\n';
+            
+            const tests = [
+                { name: 'Health Check', test: () => window.vizzarAPI.healthCheck() },
+                { name: 'Subscription Tiers', test: () => window.vizzarAPI.getSubscriptionTiers() },
+                { name: 'API Instance', test: () => Promise.resolve(typeof window.vizzarAPI) }
+            ];
+            
+            let results = [];
+            
+            for (const test of tests) {
+                try {
+                    const result = await test.test();
+                    results.push(`✅ ${test.name}: PASSED`);
+                    results.push(`   Result: ${typeof result === 'object' ? JSON.stringify(result, null, 2) : result}`);
+                } catch (error) {
+                    results.push(`❌ ${test.name}: FAILED`);
+                    results.push(`   Error: ${error.message}`);
+                }
+                results.push(''); // Empty line
+            }
+            
+            resultDiv.textContent = results.join('\n');
+        }
+        
+        // Auto-test on load
+        window.addEventListener('load', () => {
+            testConnection();
+        });
+    </script>
+</body>
+</html>

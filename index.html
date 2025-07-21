@@ -1,13 +1,1025 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/briefcase.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vizzar Jobs - Land your dream Job abroad!</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VizzarJobs - Exclusive Global Career Acceleration Platform</title>
+    <meta name="description" content="Elite career acceleration platform connecting top-tier professionals with Fortune 500 companies. Exclusive employer network. Guaranteed placements.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💎</text></svg>">
+    
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- API Connection -->
+    <script src="api-connection.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'premium-gold': '#D4AF37',
+                        'premium-dark': '#0A0A0A',
+                        'premium-gray': '#1A1A1A',
+                        'premium-light': '#F8F8F8',
+                        'premium-blue': '#1E40AF',
+                        'accent-platinum': '#E5E4E2',
+                        'accent-silver': '#C0C0C0'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'display': ['Playfair Display', 'serif']
+                    },
+                    backgroundImage: {
+                        'premium-gradient': 'linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 50%, #2A2A2A 100%)',
+                        'gold-gradient': 'linear-gradient(135deg, #D4AF37 0%, #FFD700 100%)',
+                        'glass-gradient': 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Font Awesome Pro -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Premium Custom Styles */
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .premium-shadow {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.05);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .premium-button {
+            background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .premium-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.4);
+        }
+        
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        .premium-scroll {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .luxury-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .luxury-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+        
+        .premium-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .premium-input:focus {
+            border-color: #D4AF37;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        .animate-slide-up {
+            animation: slideUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        @keyframes slideUp {
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+        
+        /* Premium typography */
+        .premium-text-lg {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+        }
+        
+        .premium-heading {
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+        
+        /* Luxury scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #1A1A1A;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #D4AF37, #FFD700);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #FFD700, #D4AF37);
+        }
+    </style>
+</head>
+<body class="bg-premium-dark text-white font-sans antialiased overflow-x-hidden">
+
+    <!-- Premium Navigation -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Premium Logo -->
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 bg-gold-gradient rounded-lg flex items-center justify-center shadow-lg">
+                        <i class="fas fa-crown text-premium-dark text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-display font-bold text-gradient">VizzarJobs</h1>
+                        <p class="text-xs text-accent-platinum">Elite Career Acceleration</p>
+                    </div>
+                </div>
+                
+                <!-- Premium Navigation Links -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#home" class="text-accent-platinum hover:text-premium-gold transition-colors font-medium">Home</a>
+                    <a href="#exclusivity" class="text-accent-platinum hover:text-premium-gold transition-colors font-medium">Exclusivity</a>
+                    <a href="#network" class="text-accent-platinum hover:text-premium-gold transition-colors font-medium">Elite Network</a>
+                    <a href="#success" class="text-accent-platinum hover:text-premium-gold transition-colors font-medium">Success Stories</a>
+                    <a href="#investment" class="text-accent-platinum hover:text-premium-gold transition-colors font-medium">Investment</a>
+                    <button onclick="scrollToApplication()" class="premium-button text-premium-dark px-8 py-3 rounded-lg font-semibold">
+                        Apply Now
+                    </button>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden text-accent-platinum">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Premium Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Premium Background -->
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=90" 
+                 alt="Elite business environment" 
+                 class="w-full h-full object-cover parallax-bg">
+            <div class="absolute inset-0 bg-gradient-to-r from-premium-dark via-premium-gray/90 to-premium-dark"></div>
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="absolute top-20 left-10 w-20 h-20 bg-gold-gradient rounded-full opacity-20 floating-element"></div>
+        <div class="absolute bottom-40 right-20 w-16 h-16 bg-gold-gradient rounded-full opacity-15 floating-element" style="animation-delay: -2s;"></div>
+        <div class="absolute top-40 right-40 w-12 h-12 bg-gold-gradient rounded-full opacity-10 floating-element" style="animation-delay: -4s;"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
+            <!-- Elite Status Badge -->
+            <div class="inline-flex items-center px-6 py-3 glass-morphism rounded-full mb-8 animate-fade-in">
+                <div class="flex -space-x-2 mr-4">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=64&q=80" class="w-8 h-8 rounded-full border-2 border-premium-gold">
+                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b47c?ixlib=rb-4.0.3&auto=format&fit=crop&w=64&q=80" class="w-8 h-8 rounded-full border-2 border-premium-gold">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&auto=format&fit=crop&w=64&q=80" class="w-8 h-8 rounded-full border-2 border-premium-gold">
+                </div>
+                <span class="text-premium-gold font-medium">Trusted by 500,000+ Elite Professionals</span>
+            </div>
+            
+            <!-- Premium Headline -->
+            <h1 class="text-6xl lg:text-8xl font-display premium-heading mb-8 animate-slide-up">
+                Elite Career
+                <span class="text-gradient block">Acceleration</span>
+            </h1>
+            
+            <!-- Premium Subheadline -->
+            <p class="text-xl lg:text-2xl text-accent-platinum premium-text-lg max-w-4xl mx-auto mb-12 animate-slide-up" style="animation-delay: 0.2s;">
+                Exclusive access to Fortune 500 companies seeking exceptional talent. 
+                Our proprietary algorithm connects you directly with decision-makers. No applications. No waiting.
+            </p>
+            
+            <!-- Premium Stats -->
+            <div class="grid grid-cols-3 gap-8 max-w-2xl mx-auto mb-16 animate-slide-up" style="animation-delay: 0.4s;">
+                <div class="text-center">
+                    <div class="text-4xl lg:text-5xl font-display font-bold text-gradient mb-2">99.2%</div>
+                    <div class="text-accent-platinum text-sm font-medium">Success Rate</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl lg:text-5xl font-display font-bold text-gradient mb-2">$180K</div>
+                    <div class="text-accent-platinum text-sm font-medium">Avg. Salary</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl lg:text-5xl font-display font-bold text-gradient mb-2">14 Days</div>
+                    <div class="text-accent-platinum text-sm font-medium">Avg. Placement</div>
+                </div>
+            </div>
+            
+            <!-- Premium CTA -->
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center animate-slide-up" style="animation-delay: 0.6s;">
+                <button onclick="scrollToApplication()" class="premium-button text-premium-dark px-12 py-5 rounded-lg font-bold text-lg">
+                    <i class="fas fa-crown mr-3"></i>
+                    Begin Elite Application
+                </button>
+                <button class="glass-morphism text-accent-platinum px-12 py-5 rounded-lg font-semibold border border-premium-gold/30 hover:border-premium-gold transition-all">
+                    <i class="fas fa-play mr-3"></i>
+                    Watch Success Stories
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Exclusivity Section -->
+    <section id="exclusivity" class="py-32 bg-premium-gray relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Content -->
+                <div>
+                    <h2 class="text-5xl lg:text-6xl font-display premium-heading mb-8">
+                        <span class="text-gradient">Exclusive</span><br>
+                        Employer Access
+                    </h2>
+                    <p class="premium-text-lg text-accent-platinum mb-8 leading-relaxed">
+                        Access our private network of Fortune 500 hiring managers. These positions are never posted publicly. 
+                        Our algorithm pre-qualifies your profile and creates direct introductions with decision-makers.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-gold-gradient rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-shield-alt text-premium-dark text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-2">Verified Employers Only</h3>
+                                <p class="text-accent-platinum">Every company in our network is pre-screened for visa sponsorship capability and financial stability.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-gold-gradient rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-user-tie text-premium-dark text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-2">Direct Decision Maker Access</h3>
+                                <p class="text-accent-platinum">Skip HR departments. Connect directly with hiring managers and C-level executives.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-gold-gradient rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-clock text-premium-dark text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-2">Guaranteed Response</h3>
+                                <p class="text-accent-platinum">100% response rate within 48 hours or your investment is fully refunded.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Premium Visual -->
+                <div class="relative">
+                    <div class="luxury-card rounded-2xl p-8 premium-shadow">
+                        <div class="mb-6">
+                            <h3 class="text-2xl font-display font-bold text-white mb-4">Today's Elite Opportunities</h3>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-4 bg-white/5 rounded-lg">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/272px-Google_2015_logo.svg.png" alt="Google" class="h-8">
+                                    <div>
+                                        <p class="text-white font-semibold">Senior ML Engineer</p>
+                                        <p class="text-accent-platinum text-sm">$220K - $280K</p>
+                                    </div>
+                                </div>
+                                <span class="text-premium-gold text-sm font-medium">Exclusive</span>
+                            </div>
+                            
+                            <div class="flex items-center justify-between p-4 bg-white/5 rounded-lg">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/480px-Microsoft_logo.svg.png" alt="Microsoft" class="h-8">
+                                    <div>
+                                        <p class="text-white font-semibold">Principal Architect</p>
+                                        <p class="text-accent-platinum text-sm">$195K - $250K</p>
+                                    </div>
+                                </div>
+                                <span class="text-premium-gold text-sm font-medium">Exclusive</span>
+                            </div>
+                            
+                            <div class="flex items-center justify-between p-4 bg-white/5 rounded-lg">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Tesla_logo.svg/375px-Tesla_logo.svg.png" alt="Tesla" class="h-8">
+                                    <div>
+                                        <p class="text-white font-semibold">Product Director</p>
+                                        <p class="text-accent-platinum text-sm">$210K - $300K</p>
+                                    </div>
+                                </div>
+                                <span class="text-premium-gold text-sm font-medium">Exclusive</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 p-4 bg-gold-gradient/20 rounded-lg border border-premium-gold/30">
+                            <p class="text-premium-gold text-sm font-medium text-center">
+                                <i class="fas fa-lock mr-2"></i>
+                                47 more exclusive opportunities available after verification
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Elite Network -->
+    <section id="network" class="py-32 bg-premium-dark">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+            <h2 class="text-5xl lg:text-6xl font-display premium-heading mb-8">
+                Our <span class="text-gradient">Elite</span> Network
+            </h2>
+            <p class="premium-text-lg text-accent-platinum max-w-3xl mx-auto mb-16">
+                Exclusive partnerships with industry leaders who value exceptional talent and are committed to visa sponsorship.
+            </p>
+            
+            <!-- Premium Company Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center opacity-70 hover:opacity-100 transition-opacity">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/272px-Google_2015_logo.svg.png" alt="Google" class="h-12 mx-auto filter brightness-0 invert">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/480px-Microsoft_logo.svg.png" alt="Microsoft" class="h-12 mx-auto filter brightness-0 invert">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Tesla_logo.svg/375px-Tesla_logo.svg.png" alt="Tesla" class="h-12 mx-auto filter brightness-0 invert">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/603px-Amazon_logo.svg.png" alt="Amazon" class="h-12 mx-auto filter brightness-0 invert">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/488px-Apple_logo_black.svg.png" alt="Apple" class="h-12 mx-auto filter brightness-0 invert">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/LinkedIn_Logo.svg/512px-LinkedIn_Logo.svg.png" alt="LinkedIn" class="h-12 mx-auto filter brightness-0 invert">
+            </div>
+            
+            <div class="mt-16 luxury-card rounded-2xl p-12 max-w-4xl mx-auto">
+                <h3 class="text-3xl font-display font-bold text-white mb-6">Why Elite Companies Choose VizzarJobs</h3>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gold-gradient rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-medal text-premium-dark text-2xl"></i>
+                        </div>
+                        <h4 class="text-xl font-semibold text-white mb-3">Pre-Qualified Talent</h4>
+                        <p class="text-accent-platinum">Every candidate is thoroughly vetted and skill-assessed before introduction.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gold-gradient rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-handshake text-premium-dark text-2xl"></i>
+                        </div>
+                        <h4 class="text-xl font-semibold text-white mb-3">Guaranteed Fit</h4>
+                        <p class="text-accent-platinum">Our AI ensures cultural and technical alignment before any introduction.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gold-gradient rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-rocket text-premium-dark text-2xl"></i>
+                        </div>
+                        <h4 class="text-xl font-semibold text-white mb-3">Rapid Deployment</h4>
+                        <p class="text-accent-platinum">Average time from introduction to start date: 6 weeks including visa processing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Success Stories -->
+    <section id="success" class="py-32 bg-premium-gray">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl lg:text-6xl font-display premium-heading mb-8">
+                    <span class="text-gradient">Success</span> Stories
+                </h2>
+                <p class="premium-text-lg text-accent-platinum max-w-3xl mx-auto">
+                    Real transformations from our elite network members.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Premium Testimonial 1 -->
+                <div class="luxury-card rounded-2xl p-8">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" class="w-16 h-16 rounded-full mr-4">
+                        <div>
+                            <h4 class="text-xl font-semibold text-white">Dr. Sarah Chen</h4>
+                            <p class="text-premium-gold">Senior ML Engineer @ Google</p>
+                            <p class="text-accent-platinum text-sm">Singapore → San Francisco</p>
+                        </div>
+                    </div>
+                    <p class="text-accent-platinum premium-text-lg leading-relaxed mb-6">
+                        "VizzarJobs connected me directly with Google's AI team lead. Within 10 days, I had an offer for $280K. The visa sponsorship was handled seamlessly."
+                    </p>
+                    <div class="flex items-center text-premium-gold">
+                        <div class="flex space-x-1 mr-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="text-sm font-medium">Verified Success</span>
+                    </div>
+                </div>
+                
+                <!-- Premium Testimonial 2 -->
+                <div class="luxury-card rounded-2xl p-8">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" class="w-16 h-16 rounded-full mr-4">
+                        <div>
+                            <h4 class="text-xl font-semibold text-white">Marcus Rodriguez</h4>
+                            <p class="text-premium-gold">Product Director @ Tesla</p>
+                            <p class="text-accent-platinum text-sm">Mexico → Austin</p>
+                        </div>
+                    </div>
+                    <p class="text-accent-platinum premium-text-lg leading-relaxed mb-6">
+                        "The exclusivity is real. Tesla's VP reached out personally after VizzarJobs' introduction. $320K offer with immediate L1-A visa sponsorship."
+                    </p>
+                    <div class="flex items-center text-premium-gold">
+                        <div class="flex space-x-1 mr-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="text-sm font-medium">Verified Success</span>
+                    </div>
+                </div>
+                
+                <!-- Premium Testimonial 3 -->
+                <div class="luxury-card rounded-2xl p-8">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b47c?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" class="w-16 h-16 rounded-full mr-4">
+                        <div>
+                            <h4 class="text-xl font-semibold text-white">Priya Sharma</h4>
+                            <p class="text-premium-gold">Principal Architect @ Microsoft</p>
+                            <p class="text-accent-platinum text-sm">India → Seattle</p>
+                        </div>
+                    </div>
+                    <p class="text-accent-platinum premium-text-lg leading-relaxed mb-6">
+                        "Three years of failed applications. VizzarJobs got me connected to Microsoft's CTO in 48 hours. H1-B sponsored, $250K package. Life-changing."
+                    </p>
+                    <div class="flex items-center text-premium-gold">
+                        <div class="flex space-x-1 mr-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="text-sm font-medium">Verified Success</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Investment Section -->
+    <section id="investment" class="py-32 bg-premium-dark">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl lg:text-6xl font-display premium-heading mb-8">
+                    Elite <span class="text-gradient">Investment</span>
+                </h2>
+                <p class="premium-text-lg text-accent-platinum max-w-3xl mx-auto">
+                    Premium access to exclusive opportunities requires a premium investment. Choose your level of elite access.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+                <!-- Starter Tier -->
+                <div class="luxury-card rounded-2xl p-6 relative">
+                    <div class="text-center mb-6">
+                        <h3 class="text-xl font-display font-bold text-white mb-2">Starter</h3>
+                        <p class="text-accent-platinum mb-4">Perfect for first-time seekers</p>
+                        <div class="text-4xl font-display font-bold text-premium-gold mb-2">$49</div>
+                        <p class="text-accent-platinum text-sm">Per month · Cancel anytime</p>
+                    </div>
+                    
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center text-accent-platinum text-sm">
+                            <i class="fas fa-check text-premium-gold mr-2"></i>
+                            5 verified employer matches
+                        </li>
+                        <li class="flex items-center text-accent-platinum text-sm">
+                            <i class="fas fa-check text-premium-gold mr-2"></i>
+                            Basic profile setup
+                        </li>
+                        <li class="flex items-center text-accent-platinum text-sm">
+                            <i class="fas fa-check text-premium-gold mr-2"></i>
+                            Visa eligibility check
+                        </li>
+                        <li class="flex items-center text-accent-platinum text-sm">
+                            <i class="fas fa-check text-premium-gold mr-2"></i>
+                            Email support
+                        </li>
+                    </ul>
+                    
+                    <button class="w-full premium-button text-premium-dark py-3 rounded-lg font-bold text-base">
+                        Start Now
+                    </button>
+                </div>
+                
+                <!-- Professional Tier -->
+                <div class="luxury-card rounded-2xl p-6 relative">
+                    <div class="text-center mb-6">
+                        <h3 class="text-xl font-display font-bold text-white mb-2">Professional</h3>
+                        <p class="text-accent-platinum mb-4">For experienced professionals</p>
+                        <div class="text-4xl font-display font-bold text-premium-gold mb-2">$149</div>
+                        <p class="text-accent-platinum text-sm">Per month · Cancel anytime</p>
+                    </div>
+                    
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center text-accent-platinum text-sm">
+                            <i class="fas fa-check text-premium-gold mr-2"></i>
+                            20 exclusive employer introductions
+                        </li>
+                        <li class="flex items-center text-accent-platinum text-sm">
+                            <i class="fas fa-check text-premium-gold mr-2"></i>
+                            Professional profile optimization
+                        </li>
+                        <li class="flex items-center text-accent-platinum text-sm">
+                            <i class="fas fa-check text-premium-gold mr-2"></i>
+                            Basic interview coaching
+                        </li>
+                        <li class="flex items-center text-accent-platinum text-sm">
+                            <i class="fas fa-check text-premium-gold mr-2"></i>
+                            60-day placement guarantee
+                        </li>
+                    </ul>
+                    
+                    <button class="w-full premium-button text-premium-dark py-3 rounded-lg font-bold text-base">
+                        Select Professional
+                    </button>
+                </div>
+                
+                <!-- Executive Tier -->
+                <div class="luxury-card rounded-2xl p-6 relative border-2 border-premium-gold">
+                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                        <span class="bg-gold-gradient text-premium-dark px-4 py-1 rounded-full font-bold text-xs">Most Popular</span>
+                    </div>
+                    
+                    <div class="text-center mb-6">
+                        <h3 class="text-xl font-display font-bold text-white mb-2">Executive</h3>
+                        <p class="text-accent-platinum mb-4">For senior professionals</p>
+                        <div class="text-4xl font-display font-bold text-premium-gold mb-2">$299</div>
+                        <p class="text-accent-platinum text-sm">Per month · Cancel anytime</p>
+                    </div>
+                    
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center text-accent-platinum text-sm">
+                            <i class="fas fa-check text-premium-gold mr-2"></i>
+                            50 exclusive employer introductions
+                        </li>
+                        <li class="flex items-center text-accent-platinum text-sm">
+                            <i class="fas fa-check text-premium-gold mr-2"></i>
+                            Executive profile & LinkedIn optimization
+                        </li>
+                        <li class="flex items-center text-accent-platinum text-sm">
+                            <i class="fas fa-check text-premium-gold mr-2"></i>
+                            Comprehensive interview coaching
+                        </li>
+                        <li class="flex items-center text-accent-platinum text-sm">
+                            <i class="fas fa-check text-premium-gold mr-2"></i>
+                            Salary negotiation support
+                        </li>
+                        <li class="flex items-center text-accent-platinum text-sm">
+                            <i class="fas fa-check text-premium-gold mr-2"></i>
+                            30-day placement guarantee
+                        </li>
+                        <li class="flex items-center text-accent-platinum text-sm">
+                            <i class="fas fa-check text-premium-gold mr-2"></i>
+                            Dedicated success manager
+                        </li>
+                    </ul>
+                    
+                    <button class="w-full premium-button text-premium-dark py-3 rounded-lg font-bold text-base">
+                        Select Executive
+                    </button>
+                </div>
+                
+                <!-- Premium Tier -->
+                <div class="luxury-card rounded-2xl p-6 relative">
+                    <div class="text-center mb-6">
+                        <h3 class="text-xl font-display font-bold text-white mb-2">Premium</h3>
+                        <p class="text-accent-platinum mb-4">For priority placement</p>
+                        <div class="text-4xl font-display font-bold text-premium-gold mb-2">$497</div>
+                        <p class="text-accent-platinum text-sm">Per month · Cancel anytime</p>
+                    </div>
+                    
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center text-accent-platinum text-sm">
+                            <i class="fas fa-check text-premium-gold mr-2"></i>
+                            100+ exclusive employer introductions
+                        </li>
+                        <li class="flex items-center text-accent-platinum text-sm">
+                            <i class="fas fa-check text-premium-gold mr-2"></i>
+                            Complete personal branding
+                        </li>
+                        <li class="flex items-center text-accent-platinum text-sm">
+                            <i class="fas fa-check text-premium-gold mr-2"></i>
+                            Advanced interview preparation
+                        </li>
+                        <li class="flex items-center text-accent-platinum text-sm">
+                            <i class="fas fa-check text-premium-gold mr-2"></i>
+                            Contract & salary negotiation
+                        </li>
+                        <li class="flex items-center text-accent-platinum text-sm">
+                            <i class="fas fa-check text-premium-gold mr-2"></i>
+                            14-day placement guarantee
+                        </li>
+                        <li class="flex items-center text-accent-platinum text-sm">
+                            <i class="fas fa-check text-premium-gold mr-2"></i>
+                            VIP support & priority access
+                        </li>
+                        <li class="flex items-center text-accent-platinum text-sm">
+                            <i class="fas fa-check text-premium-gold mr-2"></i>
+                            Network access & referrals
+                        </li>
+                    </ul>
+                    
+                    <button class="w-full premium-button text-premium-dark py-3 rounded-lg font-bold text-base">
+                        Select Premium
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Investment Guarantee -->
+            <div class="mt-16 text-center">
+                <div class="luxury-card rounded-2xl p-8 max-w-4xl mx-auto">
+                    <h3 class="text-3xl font-display font-bold text-white mb-6">
+                        <i class="fas fa-shield-alt text-premium-gold mr-4"></i>
+                        100% Success Guarantee
+                    </h3>
+                    <p class="premium-text-lg text-accent-platinum mb-8">
+                        If we don't connect you with a suitable employer within your guarantee period, 
+                        we'll refund 100% of your investment. No questions asked.
+                    </p>
+                    <div class="grid md:grid-cols-3 gap-6 text-center">
+                        <div>
+                            <div class="text-3xl font-bold text-premium-gold mb-2">99.2%</div>
+                            <p class="text-accent-platinum text-sm">Success Rate</p>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-premium-gold mb-2">$0</div>
+                            <p class="text-accent-platinum text-sm">Risk to You</p>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-premium-gold mb-2">24/7</div>
+                            <p class="text-accent-platinum text-sm">Support Access</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Application Section -->
+    <section id="application" class="py-32 bg-premium-gray relative">
+        <div class="max-w-4xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl lg:text-6xl font-display premium-heading mb-8">
+                    Begin Your <span class="text-gradient">Elite Journey</span>
+                </h2>
+                <p class="premium-text-lg text-accent-platinum max-w-2xl mx-auto">
+                    Submit your application for exclusive access to our premium employer network. 
+                    Only qualified candidates are accepted.
+                </p>
+            </div>
+            
+            <div class="luxury-card rounded-2xl p-12">
+                <form id="elite-application-form" class="space-y-8">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-white font-medium mb-3">First Name *</label>
+                            <input type="text" name="firstName" required class="w-full premium-input text-white px-6 py-4 rounded-lg" placeholder="Enter your first name">
+                        </div>
+                        <div>
+                            <label class="block text-white font-medium mb-3">Last Name *</label>
+                            <input type="text" name="lastName" required class="w-full premium-input text-white px-6 py-4 rounded-lg" placeholder="Enter your last name">
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-white font-medium mb-3">Professional Email *</label>
+                            <input type="email" name="email" required class="w-full premium-input text-white px-6 py-4 rounded-lg" placeholder="your.email@company.com">
+                        </div>
+                        <div>
+                            <label class="block text-white font-medium mb-3">Phone Number *</label>
+                            <input type="tel" name="phone" required class="w-full premium-input text-white px-6 py-4 rounded-lg" placeholder="+1 (555) 123-4567">
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-white font-medium mb-3">Current Position *</label>
+                            <input type="text" name="position" required class="w-full premium-input text-white px-6 py-4 rounded-lg" placeholder="e.g., Senior Software Engineer">
+                        </div>
+                        <div>
+                            <label class="block text-white font-medium mb-3">Years of Experience *</label>
+                            <select name="experience" required class="w-full premium-input text-white px-6 py-4 rounded-lg">
+                                <option value="">Select experience level</option>
+                                <option value="3-5">3-5 years</option>
+                                <option value="5-8">5-8 years</option>
+                                <option value="8-12">8-12 years</option>
+                                <option value="12+">12+ years</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-white font-medium mb-3">Target Country *</label>
+                            <select name="targetCountry" required class="w-full premium-input text-white px-6 py-4 rounded-lg">
+                                <option value="">Select target country</option>
+                                <option value="United States">United States</option>
+                                <option value="Canada">Canada</option>
+                                <option value="United Kingdom">United Kingdom</option>
+                                <option value="Germany">Germany</option>
+                                <option value="Australia">Australia</option>
+                                <option value="Netherlands">Netherlands</option>
+                                <option value="Singapore">Singapore</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-white font-medium mb-3">Current Salary Range *</label>
+                            <select name="salaryRange" required class="w-full premium-input text-white px-6 py-4 rounded-lg">
+                                <option value="">Select salary range</option>
+                                <option value="50k-75k">$50K - $75K</option>
+                                <option value="75k-100k">$75K - $100K</option>
+                                <option value="100k-150k">$100K - $150K</option>
+                                <option value="150k-200k">$150K - $200K</option>
+                                <option value="200k+">$200K+</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-white font-medium mb-3">Professional Summary *</label>
+                        <textarea name="summary" required rows="4" class="w-full premium-input text-white px-6 py-4 rounded-lg" placeholder="Brief summary of your professional background and career goals..."></textarea>
+                    </div>
+                    
+                    <div class="border-t border-white/10 pt-8">
+                        <div class="flex items-start space-x-3 mb-6">
+                            <input type="checkbox" id="terms" name="terms" required class="mt-1">
+                            <label for="terms" class="text-accent-platinum text-sm leading-relaxed">
+                                I agree to the <a href="#" class="text-premium-gold hover:underline">Terms of Service</a> and 
+                                <a href="#" class="text-premium-gold hover:underline">Privacy Policy</a>. I understand this is a premium service 
+                                and payment will be required upon acceptance.
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="w-full premium-button text-premium-dark py-6 rounded-lg font-bold text-xl">
+                            <i class="fas fa-crown mr-3"></i>
+                            Submit Elite Application
+                        </button>
+                        
+                        <p class="text-center text-accent-platinum text-sm mt-4">
+                            <i class="fas fa-shield-alt mr-2"></i>
+                            Your application will be reviewed within 24 hours
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Success Message -->
+        <div id="success-message" class="hidden fixed inset-0 bg-premium-dark/90 backdrop-blur-lg flex items-center justify-center z-50">
+            <div class="luxury-card rounded-2xl p-12 max-w-md mx-6 text-center">
+                <div class="w-20 h-20 bg-gold-gradient rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-check text-premium-dark text-3xl"></i>
+                </div>
+                <h3 class="text-3xl font-display font-bold text-white mb-4">Application Submitted</h3>
+                <p class="text-accent-platinum mb-8 leading-relaxed">
+                    Thank you for your elite application. Our team is reviewing your profile and will respond within 24 hours with next steps.
+                </p>
+                <button onclick="hideSuccessMessage()" class="premium-button text-premium-dark px-8 py-3 rounded-lg font-semibold">
+                    Close
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Footer -->
+    <footer class="bg-premium-dark border-t border-white/10 py-16">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-4 gap-8 mb-12">
+                <!-- Brand -->
+                <div class="lg:col-span-2">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-12 h-12 bg-gold-gradient rounded-lg flex items-center justify-center">
+                            <i class="fas fa-crown text-premium-dark text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-display font-bold text-gradient">VizzarJobs</h3>
+                            <p class="text-accent-platinum text-sm">Elite Career Acceleration</p>
+                        </div>
+                    </div>
+                    <p class="text-accent-platinum premium-text-lg max-w-md">
+                        The world's most exclusive career acceleration platform for elite professionals seeking premium opportunities with Fortune 500 companies.
+                    </p>
+                </div>
+                
+                <!-- Links -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-accent-platinum hover:text-premium-gold transition-colors">Executive Placement</a></li>
+                        <li><a href="#" class="text-accent-platinum hover:text-premium-gold transition-colors">Visa Sponsorship</a></li>
+                        <li><a href="#" class="text-accent-platinum hover:text-premium-gold transition-colors">Career Acceleration</a></li>
+                        <li><a href="#" class="text-accent-platinum hover:text-premium-gold transition-colors">Elite Network Access</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2">
+                        <li class="text-accent-platinum">
+                            <i class="fas fa-envelope mr-2"></i>
+                            elite@vizzarjobs.com
+                        </li>
+                        <li class="text-accent-platinum">
+                            <i class="fas fa-phone mr-2"></i>
+                            +1 (555) ELITE-JOB
+                        </li>
+                        <li class="text-accent-platinum">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            Global Headquarters
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-8 text-center">
+                <p class="text-accent-platinum">
+                    © 2025 VizzarJobs Elite. All rights reserved. | 
+                    <a href="#" class="text-premium-gold hover:underline">Privacy Policy</a> | 
+                    <a href="#" class="text-premium-gold hover:underline">Terms of Service</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Premium JavaScript -->
+    <script>
+        // Premium Navigation
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('premium-scroll');
+            } else {
+                navbar.classList.remove('premium-scroll');
+            }
+        });
+
+        // Smooth scrolling
+        function scrollToApplication() {
+            document.getElementById('application').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Premium form handling with backend integration
+        document.getElementById('elite-application-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(e.target);
+            const applicationData = {
+                firstName: formData.get('firstName'),
+                lastName: formData.get('lastName'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                position: formData.get('position'),
+                experience: formData.get('experience'),
+                targetCountry: formData.get('targetCountry'),
+                salaryRange: formData.get('salaryRange'),
+                summary: formData.get('summary'),
+                password: 'temp_' + Math.random().toString(36).substr(2, 9) // Temporary password
+            };
+            
+            // Show loading state
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-3"></i>Processing Application...';
+            submitBtn.disabled = true;
+            
+            try {
+                // Initialize API connection
+                const api = new VizzarAPI();
+                
+                // Submit application to backend
+                const response = await api.register(applicationData);
+                
+                if (response.success || response.token) {
+                    // Show success message
+                    document.getElementById('success-message').classList.remove('hidden');
+                    console.log('Elite application submitted successfully:', response);
+                } else {
+                    throw new Error(response.error || 'Registration failed');
+                }
+            } catch (error) {
+                console.error('Application submission error:', error);
+                alert('Application submission failed. Please try again or contact support.');
+            } finally {
+                // Restore button state
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+
+        function hideSuccessMessage() {
+            document.getElementById('success-message').classList.add('hidden');
+        }
+
+        // Premium animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.luxury-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Premium mobile menu
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            // Mobile menu implementation
+            console.log('Mobile menu clicked');
+        });
+
+        // Premium loading effects
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+        });
+    </script>
+</body>
 </html>
