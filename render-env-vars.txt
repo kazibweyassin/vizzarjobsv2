@@ -1,0 +1,14 @@
+# Environment Variables for Render Deployment
+# Copy these to your Render dashboard under Environment Variables
+
+NODE_ENV=production
+PORT=10000
+DATABASE_URL=postgresql://username:password@hostname:port/database_name
+JWT_SECRET=your-super-secure-jwt-secret-minimum-32-characters-long
+STRIPE_SECRET_KEY=sk_live_your_stripe_secret_key
+STRIPE_WEBHOOK_SECRET=whsec_your_webhook_secret
+EMAIL_API_KEY=your_sendgrid_api_key
+FROM_EMAIL=noreply@vizzarjobs.com
+
+# Render automatically provides PORT (usually 10000)
+# Make sure to use your actual production values

@@ -1,7 +1,9 @@
 // VizzarJobs Frontend API Connection
 // This file handles all API calls to the backend
 
-const API_BASE_URL = 'http://localhost:3001/api';
+const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+    ? 'http://localhost:3001/api' 
+    : 'https://vizzarjobsv2.onrender.com/api';
 
 // API utility class
 class VizzarAPI {
