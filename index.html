@@ -20,6 +20,9 @@
     <!-- API Connection -->
     <script src="api-connection.js"></script>
     
+    <!-- Main Script -->
+    <script src="script.js"></script>
+    
     <script>
         tailwind.config = {
             theme: {
@@ -964,11 +967,13 @@
             submitBtn.disabled = true;
             
             try {
-                // Initialize API connection
-                const api = new VizzarAPI();
+                // Check if API is available
+                if (!window.vizzarAPI) {
+                    throw new Error('API connection not available. Please refresh the page.');
+                }
                 
                 // Submit application to backend
-                const response = await api.register(applicationData);
+                const response = await window.vizzarAPI.register(applicationData);
                 
                 if (response.success || response.token) {
                     // Show success message

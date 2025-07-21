@@ -10,6 +10,8 @@ class VizzarAPI {
     constructor() {
         this.baseURL = API_BASE_URL;
         this.token = localStorage.getItem('vizzar_token');
+        console.log('🚀 VizzarAPI initialized with base URL:', this.baseURL);
+        console.log('🏠 Current hostname:', window.location.hostname);
     }
 
     // Set authentication token
@@ -40,6 +42,8 @@ class VizzarAPI {
     // Generic API request method
     async request(endpoint, options = {}) {
         const url = `${this.baseURL}${endpoint}`;
+        console.log('🔄 API Request:', url, options);
+        
         const config = {
             headers: this.getHeaders(),
             ...options,
@@ -47,15 +51,20 @@ class VizzarAPI {
 
         try {
             const response = await fetch(url, config);
+            console.log('📡 API Response Status:', response.status, response.statusText);
+            
             const data = await response.json();
+            console.log('📦 API Response Data:', data);
 
             if (!response.ok) {
-                throw new Error(data.error || 'API request failed');
+                throw new Error(data.error || `HTTP ${response.status}: ${response.statusText}`);
             }
 
             return data;
         } catch (error) {
-            console.error('API Error:', error);
+            console.error('❌ API Error:', error);
+            console.error('🔗 Request URL:', url);
+            console.error('⚙️ Request Config:', config);
             throw error;
         }
     }
